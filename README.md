@@ -5,8 +5,7 @@
 >
 > *Head Hunter was built to find the doors.*
 
-![Head Hunter: a tracker of companies with traffic-light statuses, hiring badges, the best email for each, and notes](docs/screenshot.png)
-
+![Head Hunter: a tracker of companies with traffic-light statuses, hiring badges, the best email for each, and notes](docs/screenshot copy.png)
 ---
 
 ## 🎬 Why it exists

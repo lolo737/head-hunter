@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Head Hunter</title>
+  <meta name="description" content="A job-hunt tracker for any industry. Import a spreadsheet of companies, find the right way in, and track every application.">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="pegs" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h1>Head Hunter</h1>
+    <p class="sub" id="listTitle">Every company on your list, with the <b>jobs or HR route</b> to use first: a jobs inbox, a hiring portal, or the general inbox when that's all they publish. Track who you've sent to as you go.</p>
+    <p class="sync" id="dataset"></p>
+  </header>
+
+  <section class="panel" aria-labelledby="data-h">
+    <h2 id="data-h">Your list</h2>
+    <p class="note">Start with any spreadsheet of companies, in any industry. Columns it understands: <code>name</code> (required), <code>region</code>, <code>site</code>, <code>jobs</code>, <code>gen</code>, <code>portal</code>, <code>hiring</code>, <code>note</code>. Excel files (.xlsx) and CSV both work.</p>
+    <div class="actions">
+      <label class="btn primary" for="importFile">Import spreadsheet</label>
+      <input id="importFile" type="file" accept=".csv,.xlsx,.xls,text/csv" hidden>
+      <button class="btn" id="exportCsv">Export CSV</button>
+      <button class="btn" id="templateCsv">Download blank template</button>
+      <button class="btn" id="resetSample">Load sample list</button>
+    </div>
+  </section>
+
+  <div class="stats" role="group" aria-label="Quick filters">
+    <button class="stat" data-f="hiring" aria-pressed="false"><span class="n" id="s-hiring">0</span><span class="l">Hiring now</span></button>
+    <button class="stat" data-f="jobs" aria-pressed="false"><span class="n" id="s-jobs">0</span><span class="l">Jobs inbox</span></button>
+    <button class="stat" data-f="portal" aria-pressed="false"><span class="n" id="s-portal">0</span><span class="l">Portal or form</span></button>
+  </div>
+
+  <div class="lights" role="group" aria-label="Traffic lights: filter by where you stand">
+    <button class="light" data-l="grey" aria-pressed="false"><span class="dot"></span><span class="n" id="l-grey">0</span><span class="l">Not contacted</span></button>
+    <button class="light" data-l="amber" aria-pressed="false"><span class="dot"></span><span class="n" id="l-amber">0</span><span class="l">Sent or scheduled</span></button>
+    <button class="light" data-l="green" aria-pressed="false"><span class="dot"></span><span class="n" id="l-green">0</span><span class="l">Replied or interview</span></button>
+    <button class="light" data-l="red" aria-pressed="false"><span class="dot"></span><span class="n" id="l-red">0</span><span class="l">No reply or rejected</span></button>
+  </div>
+
+  <details class="panel letter">
+    <summary><h2>Your letter</h2></summary>
+    <p class="note">Write it once. <code>{company}</code>, <code>{role}</code> and <code>{name}</code> are filled in for each company when you press <b>Draft email</b>, which opens your own mail app. Attach your CV there before sending.</p>
+    <label for="subject">Subject</label>
+    <input id="subject" type="text">
+    <label for="letter">Letter</label>
+    <textarea id="letter" rows="9"></textarea>
+    <label for="myName">Your name</label>
+    <input id="myName" type="text" autocomplete="name">
+  </details>
+
+  <div class="controls">
+    <label for="q" hidden>Search</label>
+    <input id="q" type="search" placeholder="Search company, email, town, notes…">
+    <label for="region" hidden>Region</label>
+    <select id="region"><option value="">All regions</option></select>
+    <button class="btn primary" id="copyAll">Copy emails in view</button>
+    <span class="count" id="count"></span>
+  </div>
+  <p class="sync" id="sync">Everything is saved in this browser only. Export a CSV now and then to keep a backup.</p>
+
+  <div class="list" id="list"></div>
+
+  <footer>Head Hunter keeps no server and sends nothing on its own: your list and statuses live in this browser, and emails open in your own mail app.</footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="js/core.js"></script>
+<script src="js/sample-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
